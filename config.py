@@ -16,7 +16,7 @@ max_epoch = 2
 
 fast_test=True
 
-full_test=True
+full_test=False
 
 model_name_list=['gpt2-large','gpt2-medium','gpt2']
 
