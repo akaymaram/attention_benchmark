@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
 import os
 import cv2
-from google.colab.patches import cv2_imshow
 import numpy as np
 
 def plot_result(results_dict, save_path="plots"):
@@ -41,7 +40,6 @@ def plot_result(results_dict, save_path="plots"):
             plt.xlabel("Attention Mechanism", fontsize=14)
             plt.ylabel(f"{metric_name} ({unit})", fontsize=14)
             plt.grid(axis="y")
-
             plt.xticks(rotation=60, ha="right", fontsize=12)
 
             filename = f"{metric_name.replace(' ', '_')}_{unit}_bar.png"
@@ -51,7 +49,9 @@ def plot_result(results_dict, save_path="plots"):
 
             image = cv2.imread(filepath)
             if image is not None:
-                cv2_imshow(image)
+                cv2.imshow(f"{metric_name}", image)
+                cv2.waitKey(0)
+                cv2.destroyAllWindows()
             else:
                 print(f"Failed to load image: {filepath}")
         else:
@@ -75,6 +75,8 @@ def plot_result(results_dict, save_path="plots"):
 
             image = cv2.imread(filepath)
             if image is not None:
-                cv2_imshow(image)
+                cv2.imshow(f"{metric_name}", image)
+                cv2.waitKey(0)
+                cv2.destroyAllWindows()
             else:
                 print(f"Failed to load image: {filepath}")
